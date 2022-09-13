@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-field {
+    @apply px-2 bg-gray-600 rounded-md mx-2 my-1;
+  }
+  .form-entry {
+    @apply font-bold;
+  }
+  .form-group {
+    @apply flex-wrap;
+  }
+}
