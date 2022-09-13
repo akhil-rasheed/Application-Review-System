@@ -2,17 +2,17 @@ import React from "react";
 import { Form, Field } from "react-final-form";
 import axios from "axios";
 
-const onSubmit = (values) => {
-  console.log(values);
-  axios
-    .post("api/candidates/", values)
+export default function CandidateForm({ setNewCandidate }) {
+  const onSubmit = (values) => {
+    console.log(values);
+    axios
+      .post("api/candidates/", values)
 
-    .then((response) => {
-      console.log(response);
-    });
-};
-
-export default function CandidateForm() {
+      .then((response) => {
+        console.log(response);
+        setNewCandidate(false);
+      });
+  };
   return (
     <div>
       <Form

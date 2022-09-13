@@ -14,7 +14,7 @@ export default function CandidateModalView({ setNewCandidate }) {
           X
         </button>
         <p className="text-3xl font-bold my-12">Add a new candidate</p>
-        <CandidateForm />
+        <CandidateForm setNewCandidate={setNewCandidate} />
       </div>
     </div>
   );

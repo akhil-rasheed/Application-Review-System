@@ -12,6 +12,7 @@ export default function CandidateModalView({
     console.log(newInfo);
     axios.put(`/api/candidates/${candidateId}/`, newInfo).then((response) => {
       console.log(response);
+      setInfo(response.data);
     });
   };
   const markRejected = () => {
@@ -19,6 +20,7 @@ export default function CandidateModalView({
     console.log(newInfo);
     axios.put(`/api/candidates/${candidateId}/`, newInfo).then((response) => {
       console.log(response);
+      setInfo(response.data);
     });
   };
 

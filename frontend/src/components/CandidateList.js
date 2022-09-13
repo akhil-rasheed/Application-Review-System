@@ -82,5 +82,6 @@ export default function CandidateList({ setSelectedCandidate }) {
         </table>
       </div>
     );
-  }
+  } else
+    return <div>No candidates yet, add one by pressing the below button</div>;
 }
