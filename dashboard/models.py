@@ -31,4 +31,4 @@ class Candidate(models.Model):
     education = models.CharField(max_length=255)
 
     def _str_(self):
-        return self.firstName + " " + self.lastName
+        return 'self.firstName + " " + self.lastName'

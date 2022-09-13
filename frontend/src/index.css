@@ -10,6 +10,12 @@
     @apply font-bold;
   }
   .form-group {
-    @apply flex-wrap;
+    @apply flex-wrap my-2;
+  }
+}
+
+@layer base {
+  html {
+    @apply bg-gray-900;
   }
 }

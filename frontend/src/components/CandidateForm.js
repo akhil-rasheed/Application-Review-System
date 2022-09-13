@@ -15,13 +15,12 @@ const onSubmit = (values) => {
 export default function CandidateForm() {
   return (
     <div>
-      <p className="text-3xl my-12">Add a new candidate</p>
-
       <Form
         onSubmit={onSubmit}
         initialValues={{}}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
+            <p className="text-xl font-extrabold">Candidate details</p>
             <div className="form-group">
               <label className="form-entry">Name</label>
               <Field
@@ -39,7 +38,6 @@ export default function CandidateForm() {
                 placeholder="Last Name"
               />
             </div>
-            <p className="text-xl font-extrabold">Contact details</p>
 
             <div className="form-group">
               <label className="form-entry">Email address</label>
@@ -64,7 +62,7 @@ export default function CandidateForm() {
             </div>
 
             <div className="form-group">
-              <label className="form-entry">Location</label>
+              <label className="form-entry align-text-top">Location</label>
               <Field name="location" component="select" className="form-field">
                 <option />
                 <option value="Bangalore">Bangalore</option>
@@ -72,6 +70,9 @@ export default function CandidateForm() {
                 <option value="Mumbai">Mumbai</option>
               </Field>
             </div>
+
+            <br></br>
+            <br></br>
 
             <div className="form-group">
               <label className="form-entry">Position</label>
@@ -99,7 +100,7 @@ export default function CandidateForm() {
             </div>
 
             <div>
-              <label className="form-entry">Education</label>
+              <label className="form-entry align-top">Education</label>
               <Field
                 className="form-field"
                 name="education"
@@ -109,7 +110,7 @@ export default function CandidateForm() {
             </div>
 
             <div>
-              <label className="form-entry">Skills</label>
+              <label className="form-entry align-top">Skills</label>
               <Field
                 className="form-field"
                 name="skills"
@@ -119,7 +120,7 @@ export default function CandidateForm() {
             </div>
 
             <div>
-              <label className="form-entry">Experience</label>
+              <label className="form-entry align-top">Experience</label>
               <Field
                 className="form-field"
                 name="experience"
@@ -128,23 +129,22 @@ export default function CandidateForm() {
               />
             </div>
 
-            <div className="buttons">
+            <div className="pt-12">
               <button
                 type="submit"
                 disabled={submitting || pristine}
-                className="text-bold rounded-xl border-2 p-1 text-white  mx-2 hover:bg-transparent bg-green-400 "
+                className="text-bold rounded-xl p-2 text-white  mx-2 hover:bg-gray-600 bg-green-400 "
               >
                 Submit
               </button>
               <button
                 type="button"
-                className="text-bold rounded-xl border-2 p-1 text-white  mx-2 hover:bg-transparent bg-red-400"
+                className="text-bold rounded-xl p-2 text-white  mx-2 hover:bg-gray-600 bg-red-400"
                 onClick={form.reset}
               >
                 Reset
               </button>
             </div>
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}
       />
