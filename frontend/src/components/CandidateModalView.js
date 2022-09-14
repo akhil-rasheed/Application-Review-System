@@ -10,18 +10,31 @@ export default function CandidateModalView({
   const markAccepted = () => {
     const newInfo = { ...info, status: 2 };
     console.log(newInfo);
-    axios.put(`/api/candidates/${candidateId}/`, newInfo).then((response) => {
-      console.log(response);
-      setInfo(response.data);
-    });
+    axios
+      .put(`/api/candidates/${candidateId}/`, newInfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setInfo(response.data);
+      });
   };
   const markRejected = () => {
     const newInfo = { ...info, status: 3 };
     console.log(newInfo);
-    axios.put(`/api/candidates/${candidateId}/`, newInfo).then((response) => {
-      console.log(response);
-      setInfo(response.data);
-    });
+    axios.put(`/api/candidates/${candidateId}/`, newInfo).then(
+      (response) => {
+        console.log(response);
+        setInfo(response.data);
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
   };
 
   useEffect(() => {
@@ -29,6 +42,11 @@ export default function CandidateModalView({
     axios.get(`/api/candidates/${candidateId}`).then((response) => {
       console.log(response.data);
       setInfo(response.data);
+      axios.get(response.data.resume).then((res) => {
+        console.log(res);
+        // const newInfo = { ...response.data, resume: res.data };
+        // setInfo(newInfo);
+      });
     });
   });
 
@@ -44,7 +62,7 @@ export default function CandidateModalView({
           >
             X
           </button>
-          <div className="py-8">
+          <div className="p-4 border w-max rounded-xl">
             <p className="font-bold text-3xl">
               {info.firstName + " " + info.lastName}
             </p>
@@ -53,7 +71,8 @@ export default function CandidateModalView({
               <br></br> {info.phone}
               <p className="font-light float right">{info.location}</p>
             </div>
-
+          </div>
+          <div>
             <br></br>
             <br></br>
 
@@ -86,14 +105,14 @@ export default function CandidateModalView({
 
           {/* Message indicating that the candidate has been accepted or rejected */}
           <div
-            className={`font-bold rounded-md text-white grid place-items-center text-md p-2   ${
+            className={`font-bold rounded-md text-white grid place-items-center text-md p-2 mt-6   ${
               info.status === 1 ? "hidden" : ""
             } ${info.status === 2 ? "bg-green-400" : ""} ${
               info.status === 3 ? " bg-red-400" : ""
             }`}
           >
             <p>
-              The candidate has been
+              Application
               {` ${info.status === 2 ? "accepted" : "rejected"}`}
             </p>
           </div>

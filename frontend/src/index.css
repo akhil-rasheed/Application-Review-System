@@ -4,7 +4,7 @@
 
 @layer components {
   .form-field {
-    @apply px-2 bg-gray-600 rounded-md mx-2 my-1;
+    @apply px-1 py-2 bg-gray-600 rounded-md mx-2 my-1;
   }
   .form-entry {
     @apply font-bold;

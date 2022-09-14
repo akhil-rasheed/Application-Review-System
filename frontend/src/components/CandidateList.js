@@ -3,11 +3,10 @@ import axios from "axios";
 
 export default function CandidateList({ setSelectedCandidate }) {
   const [candidates, setCandidates] = useState("");
-
+  console.log(candidates);
   useEffect(() => {
     if (candidates) return;
     axios.get("api/candidates").then((res) => {
-      console.log(res.data);
       setCandidates(res.data);
     });
   }, [candidates]);
@@ -18,7 +17,7 @@ export default function CandidateList({ setSelectedCandidate }) {
     3: "Rejected",
   };
 
-  if (candidates) {
+  if (candidates[0]) {
     return (
       <div className="grid place-items-center">
         <table className="w-2/3 text-sm text-left text-gray-500 dark:text-gray-400 ">

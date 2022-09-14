@@ -1,13 +1,17 @@
 from django.db import models
 
 
+def upload_to(instance, filename):
+    return '/'.join(['resumes', str(instance.lastName), 'resume.pdf'])
+
+
 class Candidate(models.Model):
     id = models.AutoField(primary_key=True, blank=True)
     dateApplied = models.DateTimeField(auto_now_add=True, blank=True)
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=50)
     email = models.EmailField(max_length=255)
-   # resume = models.FileField(blank=True, null=True, upload_to='uploads/')
+    resume = models.FileField(blank=True, upload_to=upload_to)
     phone = models.CharField(max_length=255)
 
     APPLIED_STATUS = 1

@@ -7,7 +7,6 @@ export default function Dashboard() {
   const [selectedCandidate, setSelectedCandidate] = useState("");
   const [newCandidate, setNewCandidate] = useState();
 
-  console.log(selectedCandidate);
   if (selectedCandidate) {
     return (
       <CandidateModalView

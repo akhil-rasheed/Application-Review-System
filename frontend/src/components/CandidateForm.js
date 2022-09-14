@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import axios from "axios";
 
 export default function CandidateForm({ setNewCandidate }) {
+  const [resume, setResume] = useState();
+
   const onSubmit = (values) => {
-    console.log(values);
+    const newValues = { ...values, resume: resume };
+    console.log(newValues);
     axios
-      .post("api/candidates/", values)
+      .post("api/candidates/", newValues, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
 
       .then((response) => {
         console.log(response);
@@ -59,6 +66,19 @@ export default function CandidateForm({ setNewCandidate }) {
                 type="text"
                 placeholder="+91 2382736932"
               />
+            </div>
+
+            <div className="form-group">
+              <label className="form-entry">Upload Resume</label>
+              <input
+                type="file"
+                name="resume"
+                className="form-field"
+                onChange={(e) => {
+                  console.log(e.target.files[0]);
+                  setResume(e.target.files[0]);
+                }}
+              ></input>
             </div>
 
             <div className="form-group">
